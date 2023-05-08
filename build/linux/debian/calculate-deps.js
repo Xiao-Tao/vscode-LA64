@@ -50,6 +50,9 @@ function calculatePackageDeps(binaryPath, arch, sysroot) {
         case 'arm64':
             cmd.push(`-l${sysroot}/usr/lib/aarch64-linux-gnu`, `-l${sysroot}/lib/aarch64-linux-gnu`);
             break;
+        case 'loongarch64':
+            cmd.push(`-l${sysroot}usr/lib/loongarch64-linux-gnu`, `-l${sysroot}/lib/loongarch64-linux-gnu`);
+            break;
     }
     cmd.push(`-l${sysroot}/usr/lib`);
     cmd.push('-O', '-e', path.resolve(binaryPath));

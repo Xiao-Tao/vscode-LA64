@@ -53,6 +53,10 @@ function calculatePackageDeps(binaryPath: string, arch: DebianArchString, sysroo
 			cmd.push(`-l${sysroot}/usr/lib/aarch64-linux-gnu`,
 				`-l${sysroot}/lib/aarch64-linux-gnu`);
 			break;
+		case 'loongarch64':
+			cmd.push(`-l${sysroot}/usr/lib/loong64-linux-gnu`,
+				`-l${sysroot}/lib/loong64-linux-gnu`);
+			break;
 	}
 	cmd.push(`-l${sysroot}/usr/lib`);
 	cmd.push('-O', '-e', path.resolve(binaryPath));

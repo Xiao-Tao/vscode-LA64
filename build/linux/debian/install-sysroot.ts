@@ -38,6 +38,9 @@ type SysrootDictEntry = {
 };
 
 export async function getSysroot(arch: DebianArchString): Promise<string> {
+	if(arch === 'loong64') {
+		return '/tmp/debian_bullseye_loong64-sysroot/';
+	}
 	const sysrootJSONUrl = `https://raw.githubusercontent.com/electron/electron/v${util.getElectronVersion().electronVersion}/script/sysroots.json`;
 	const sysrootDictLocation = `${tmpdir()}/sysroots.json`;
 	const result = spawnSync('curl', [sysrootJSONUrl, '-o', sysrootDictLocation]);
