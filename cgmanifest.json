@@ -533,7 +533,7 @@
 			},
 			"isOnlyProductionDependency": true,
 			"license": "MIT",
-			"version": "22.3.14"
+			"version": "22.3.16"
 		},
 		{
 			"component": {
