@@ -122,6 +122,9 @@ async function fetchUrl(options, retries = 10, retryDelay = 1000) {
 async function getVSCodeSysroot(arch, isMusl = false) {
     let expectedName;
     let triple;
+    if(arch === 'loongarch64' || arch === 'loong64') {
+       return '/tmp/debian_bullseye_loong64-sysroot/';
+    }
     const prefix = process.env['VSCODE_SYSROOT_PREFIX'] ?? '-glibc-2.28-gcc-8.5.0';
     switch (arch) {
         case 'amd64':
@@ -169,6 +172,9 @@ async function getVSCodeSysroot(arch, isMusl = false) {
     return result;
 }
 async function getChromiumSysroot(arch) {
+    if(arch === 'loongarch64' || arch === 'loong64') {
+       return '/tmp/debian_bullseye_loong64-sysroot/';
+    }
     const sysrootJSONUrl = `https://raw.githubusercontent.com/electron/electron/v${getElectronVersion().electronVersion}/script/sysroots.json`;
     const sysrootDictLocation = `${(0, os_1.tmpdir)()}/sysroots.json`;
     const result = (0, child_process_1.spawnSync)('curl', [sysrootJSONUrl, '-o', sysrootDictLocation]);

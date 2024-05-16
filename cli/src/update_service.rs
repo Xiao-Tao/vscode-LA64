@@ -215,6 +215,7 @@ pub enum Platform {
 	LinuxARM64Legacy,
 	LinuxARM32,
 	LinuxARM32Legacy,
+	LinuxLoong64,
 	DarwinX64,
 	DarwinARM64,
 	WindowsX64,
@@ -228,6 +229,7 @@ impl Platform {
 			Platform::LinuxX64 => Some("linux-x64".to_owned()),
 			Platform::LinuxARM64 => Some("linux-arm64".to_owned()),
 			Platform::LinuxARM32 => Some("linux-armhf".to_owned()),
+			Platform::LinuxLoong64 => Some("linux-loongarch64".to_owned()),
 			Platform::DarwinX64 => Some("darwin".to_owned()),
 			Platform::DarwinARM64 => Some("darwin-arm64".to_owned()),
 			Platform::WindowsX64 => Some("win32-x64-archive".to_owned()),
@@ -246,6 +248,7 @@ impl Platform {
 			Platform::LinuxARM64Legacy => "server-linux-legacy-arm64",
 			Platform::LinuxARM32 => "server-linux-armhf",
 			Platform::LinuxARM32Legacy => "server-linux-legacy-armhf",
+			Platform::LinuxLoong64 => "server-linux-loongarch64",
 			Platform::DarwinX64 => "server-darwin",
 			Platform::DarwinARM64 => "server-darwin-arm64",
 			Platform::WindowsX64 => "server-win32-x64",
@@ -265,6 +268,7 @@ impl Platform {
 			Platform::LinuxARM64Legacy => "cli-linux-arm64",
 			Platform::LinuxARM32 => "cli-linux-armhf",
 			Platform::LinuxARM32Legacy => "cli-linux-armhf",
+			Platform::LinuxLoong64 => "cli-linux-loongarch64",
 			Platform::DarwinX64 => "cli-darwin-x64",
 			Platform::DarwinARM64 => "cli-darwin-arm64",
 			Platform::WindowsARM64 => "cli-win32-arm64",
@@ -299,6 +303,8 @@ impl Platform {
 			Some(Platform::LinuxARM64)
 		} else if cfg!(all(target_os = "macos", target_arch = "x86_64")) {
 			Some(Platform::DarwinX64)
+		} else if cfg!(all(target_os = "linux", target_arch = "loongarch64")) {
+			Some(Platform::LinuxLoong64)
 		} else if cfg!(all(target_os = "macos", target_arch = "aarch64")) {
 			Some(Platform::DarwinARM64)
 		} else if cfg!(all(target_os = "windows", target_arch = "x86_64")) {
@@ -324,6 +330,7 @@ impl fmt::Display for Platform {
 			Platform::LinuxARM64Legacy => "LinuxARM64Legacy",
 			Platform::LinuxARM32 => "LinuxARM32",
 			Platform::LinuxARM32Legacy => "LinuxARM32Legacy",
+			Platform::LinuxLoong64 => "LinuxLoong64",
 			Platform::DarwinX64 => "DarwinX64",
 			Platform::DarwinARM64 => "DarwinARM64",
 			Platform::WindowsX64 => "WindowsX64",

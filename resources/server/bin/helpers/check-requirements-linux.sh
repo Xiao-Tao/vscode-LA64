@@ -40,6 +40,7 @@ fi
 # Based on https://github.com/bminor/glibc/blob/520b1df08de68a3de328b65a25b86300a7ddf512/elf/cache.c#L162-L245
 case $ARCH in
 	x86_64) LDCONFIG_ARCH="x86-64";;
+        loongarch64) LDCONFIG_ARCH="double-float";;
 	armv7l | armv8l)
         MIN_GLIBCXX_VERSION="3.4.26"
         LDCONFIG_ARCH="hard-float"

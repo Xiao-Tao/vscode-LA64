@@ -59,6 +59,13 @@ function calculatePackageDeps(binaryPath: string, arch: DebianArchString, chromi
 				`-l${vscodeSysroot}/usr/lib/aarch64-linux-gnu`,
 				`-l${vscodeSysroot}/lib/aarch64-linux-gnu`);
 			break;
+		case 'loongarch64':
+		case 'loong64':
+			cmd.push(`-l${chromiumSysroot}/usr/lib/loongarch64-linux-gnu`,
+				`-l${chromiumSysroot}/lib/loongarch64-linux-gnu`,
+				`-l${vscodeSysroot}/usr/lib/loongarch64-linux-gnu`,
+				`-l${vscodeSysroot}/lib/loongarch64-linux-gnu`);
+			break;
 	}
 	cmd.push(`-l${chromiumSysroot}/usr/lib`);
 	cmd.push(`-L${vscodeSysroot}/debian/libxkbfile1/DEBIAN/shlibs`);

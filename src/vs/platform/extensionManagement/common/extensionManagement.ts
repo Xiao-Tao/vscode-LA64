@@ -45,6 +45,7 @@ export function TargetPlatformToString(targetPlatform: TargetPlatform) {
 		case TargetPlatform.LINUX_X64: return 'Linux 64 bit';
 		case TargetPlatform.LINUX_ARM64: return 'Linux ARM 64';
 		case TargetPlatform.LINUX_ARMHF: return 'Linux ARM';
+		case TargetPlatform.LINUX_LOONG64: return 'Linux LOONGARCH 64';
 
 		case TargetPlatform.ALPINE_X64: return 'Alpine Linux 64 bit';
 		case TargetPlatform.ALPINE_ARM64: return 'Alpine ARM 64';
@@ -68,6 +69,7 @@ export function toTargetPlatform(targetPlatform: string): TargetPlatform {
 		case TargetPlatform.LINUX_X64: return TargetPlatform.LINUX_X64;
 		case TargetPlatform.LINUX_ARM64: return TargetPlatform.LINUX_ARM64;
 		case TargetPlatform.LINUX_ARMHF: return TargetPlatform.LINUX_ARMHF;
+		case TargetPlatform.LINUX_LOONG64: return TargetPlatform.LINUX_LOONG64;
 
 		case TargetPlatform.ALPINE_X64: return TargetPlatform.ALPINE_X64;
 		case TargetPlatform.ALPINE_ARM64: return TargetPlatform.ALPINE_ARM64;
@@ -102,6 +104,9 @@ export function getTargetPlatform(platform: Platform | 'alpine', arch: string | 
 			}
 			if (arch === 'arm') {
 				return TargetPlatform.LINUX_ARMHF;
+			}
+			if (arch === 'loong64') {
+				return TargetPlatform.LINUX_LOONG64;
 			}
 			return TargetPlatform.UNKNOWN;
 

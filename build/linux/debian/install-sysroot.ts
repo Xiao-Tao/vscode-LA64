@@ -183,6 +183,9 @@ export async function getVSCodeSysroot(arch: DebianArchString, isMusl: boolean =
 }
 
 export async function getChromiumSysroot(arch: DebianArchString): Promise<string> {
+	if(arch === 'loongarch64' || arch === 'loong64') {
+	return '/tmp/debian_bullseye_loong64-sysroot/';
+	}
 	const sysrootJSONUrl = `https://raw.githubusercontent.com/electron/electron/v${getElectronVersion().electronVersion}/script/sysroots.json`;
 	const sysrootDictLocation = `${tmpdir()}/sysroots.json`;
 	const result = spawnSync('curl', [sysrootJSONUrl, '-o', sysrootDictLocation]);

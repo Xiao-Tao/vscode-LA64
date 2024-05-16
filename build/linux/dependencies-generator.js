@@ -58,7 +58,7 @@ async function getDependencies(packageType, buildDir, applicationName, arch) {
     // Add the native modules
     const files = findResult.stdout.toString().trimEnd().split('\n');
     // Add the tunnel binary.
-    files.push(path_1.default.join(buildDir, 'bin', product.tunnelApplicationName));
+    //files.push(path_1.default.join(buildDir, 'bin', product.tunnelApplicationName));
     // Add the main executable.
     files.push(appPath);
     // Add chrome sandbox and crashpad handler.
